@@ -10,6 +10,7 @@ const outputList = (props) => {
     }
 
     const table = {
+        color: 'black',
         textAlign: 'center',
         padding: '20px'
     }
@@ -57,18 +58,26 @@ const outputList = (props) => {
 }
 else
  {                                                   //serached display
-    const searchedProduct= props.list.filter(({name})=>name===search_data)
-    let name;
+    const searchedProduct= props.list.filter(({name})=>(name.includes(search_data)))
+    let name3;
 
     if(searchedProduct.length!==0){
         console.log(searchedProduct);
 
-        name=searchedProduct.map((element,index) => {
+     name3=searchedProduct.map((element,index) => {
+         if(element.inStock === true){
             return (<tbody><tr key = {index}>
                 <td style = {table}>{element.name}</td>
                 <td style = {table}>{element.price}</td>
-                <td style = {table}>{element.inStock?"Available":"Not Available"}</td>
-            </tr></tbody>);
+            
+            </tr></tbody>);}
+            else{
+                return (<tbody><tr key = {index}>
+                    <td style = {tr}>{element.name}</td>
+                    <td style = {tr}>{element.price}</td>
+                  
+                </tr></tbody>);
+            }
         })
         return(<div style = {style}>
             <table style = {table}>
@@ -76,18 +85,19 @@ else
                 <tr>
                     <th style = {table}>Name</th>
                     <th style = {table}>Price</th>
-                    <th style = {table}>Stock</th>
                 </tr>
                 </thead>
-    
-                {name}
+                <div>
+                {name3}
+                </div>
             </table>
         </div>);
     }else{
-        //window.alert("Not Found,Try Again..!")   
+        window.alert("Not Found,Try Again..!")  
+       
                                              //notfound message 
-    return(<div><h1 style={tr}>Not Found,Try Again...!</h1>
-        <div style = {style}>
+    return(""
+        /*<div style = {style}>
         <table style = {table}>
         <thead>
             <tr>
@@ -98,7 +108,7 @@ else
 
             {props.check ? name1 : name2}
         </table>
-    </div></div>);
+    </div>*/);
     }    
  }
 };

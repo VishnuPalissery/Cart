@@ -23,15 +23,12 @@ handleChangeChk = () =>{
 
  handletext = (event) =>{ 
   event.preventDefault();
-  if(event.keyCode === 13){
   this.setState (
     {
       text: event.target.value,
       stt: 1
     }
   );
- 
-}
 }
   render() {
     const style = {
