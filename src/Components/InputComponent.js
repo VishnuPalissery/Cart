@@ -1,7 +1,6 @@
 import React from 'react';
-import outputList from './OutputList';
-const inputComponent = (props) => {
+const inputComponent = ({changed}) => {
         return(
-               <input type = 'text'  onKeyUp= {props.changed} placeholder = 'Search.....'/>
+               <input type = 'text'  onKeyUp= {changed} placeholder = 'Search.....'/>
         );   }
 export default inputComponent;
